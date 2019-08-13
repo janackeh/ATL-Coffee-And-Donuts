@@ -36,7 +36,55 @@ const neighborhoodRouter = express.Router()
  *
  * TODO: delete this handler; it's just a sample
  */ 
-
+neighborhoodRouter.get("/", (req, res) => {
+  neighborhoodApi.getAllNeighborhoods().then(neighborhoods => {
+      res.json(neighborhoods);
+    });
+  });
+  
+  neighborhoodRouter.get("/:neighborhoodsId", (req, res) => {
+    neighborhoodsApi
+      .getNeighborhood(req.params.neighborhoodsId)
+      .then(neighborhoods => {
+        res.json(neighborhoods);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+  
+  neighborhoodRouter.post("/", (req, res) => {
+    neighborhoodApi
+      .addNewNeighborhood(req.body)
+      .then(neighborhood => {
+        res.json(neighborhood);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+  
+  neighborhoodRouter.put("/:neighborhoodId", (req, res) => {
+    neighborhoodApi
+      .updateNeighborhood(req.params.neighborhoodId, req.body)
+      .then(updateNeighborhood => {
+        res.json(updateNeighborhood);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+  
+  niehgborhoodRouter.delete("/:neighborhoodId", (req, res) => {
+    neighborhoodApi
+      .deleteNeighborhood(req.params.neighborhoodId)
+      .then(neighborhood => {
+        res.json(neighborhood);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
 
 /* Step 6
  *
@@ -44,5 +92,6 @@ const neighborhoodRouter = express.Router()
  *
  */
 module.exports = {
+  neighborhoodRouter
   
 }
