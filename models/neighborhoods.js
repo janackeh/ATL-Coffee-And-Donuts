@@ -43,14 +43,27 @@ const NeighborhoodCollection = mongoose.model('Neighborhood', NeighborhoodSchema
  * TODO: delete this it's just a sample
  *
  */
-function getAllNeighborhoods() {
+
+ function getAllNeighborhoods() {
     return NeighborhoodCollection.find();
   }
-  
-  function getNeighborhood(NeighborhoodId) {
+
+ function getNeighborhood(NeighborhoodId) {
     return NeighborhoodCollection.findById(NeighborhoodId);
   }
-  
+ function addNewNeighborhood(neighborhoodObject) {
+  return NeighborhoodCollection.create(neighborhoodObject);
+}
+
+ function updateNeighborhood(neighborhoodId, updatedNeighborhood) {
+  return NeighborhoodCollection.findByIdAndUpdate(neighborhoodId, updatedNeighborhood, {
+    new: true
+  });
+}
+
+ function deleteNeighborhood(neighborhoodId) {
+  return NeighborhoodCollection.findByIdAndDelete(neighborhoodId);
+} 
 
 /* Step 5
  *
@@ -58,5 +71,11 @@ function getAllNeighborhoods() {
  * object
  */
 module.exports = {
+    getAllNeighborhoods,
+    getNeighborhood,
+    addNewNeighborhood,
+    updateNeighborhood,
+    deleteNeighborhood
+
   
 }
