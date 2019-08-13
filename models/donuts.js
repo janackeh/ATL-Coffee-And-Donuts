@@ -42,7 +42,27 @@ const DonutCollection = mongoose.model('Donut', DonutSchema)
  * TODO: delete this it's just a sample
  *
  */
+function getAllDonuts() {
+  return DonutCollection.find();
+}
 
+function getDonut(donutId) {
+  return DonutCollection.findById(donutId);
+}
+
+function addNewDonut(donutObject) {
+  return DonutCollection.create(donutObject);
+}
+
+function updateDonut(donutId, updatedDonut) {
+  return DonutCollection.findByIdAndUpdate(donutId, updatedDonut, {
+    new: true
+  });
+}
+
+function deleteDonut(donutId) {
+  return DonutCollection.findByIdAndDelete(donutId);
+}
 
 /* Step 5
  *
@@ -50,5 +70,10 @@ const DonutCollection = mongoose.model('Donut', DonutSchema)
  * object
  */
 module.exports = {
+  getAllDonuts,
+  getDonut,
+  addNewDonut,
+  updateDonut,
+  deleteDonut
   
 }
