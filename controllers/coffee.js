@@ -36,7 +36,55 @@ const coffeeRouter = express.Router()
  *
  * TODO: delete this handler; it's just a sample
  */ 
-
+coffeeRouter.get("/", (req, res) => {
+  coffeeApi.getAllCoffees().then(coffee => {
+      res.json(coffee);
+    });
+  });
+  
+  coffeeRouter.get("/:coffeeId", (req, res) => {
+    coffeeApi
+      .getCoffee(req.params.coffeeId)
+      .then(coffee => {
+        res.json(coffee);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+  
+  coffeeRouter.post("/", (req, res) => {
+    coffeeApi
+      .addNewCoffee(req.body)
+      .then(coffee => {
+        res.json(coffee);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+  
+  coffeeRouter.put("/:coffeeId", (req, res) => {
+    coffeeApi
+      .updateCoffee(req.params.coffeeId, req.body)
+      .then(updateCoffee => {
+        res.json(updateCoffee);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+  
+  coffeeRouter.delete("/:coffeeId", (req, res) => {
+    coffeeApi
+      .deleteCoffee(req.params.coffeeId)
+      .then(coffee => {
+        res.json(coffee);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
 
 /* Step 6
  *
@@ -44,5 +92,5 @@ const coffeeRouter = express.Router()
  *
  */
 module.exports = {
-  templateRouter
+  coffeeRouter
 }
