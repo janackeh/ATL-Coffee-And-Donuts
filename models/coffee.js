@@ -43,7 +43,27 @@ const CoffeeSchema = new mongoose.Schema({
  * TODO: delete this it's just a sample
  *
  */
+function getAllCoffees() {
+  return CoffeeCollection.find();
+}
 
+function getCoffee(coffeeId) {
+  return CoffeeCollection.findById(coffeeId);
+}
+
+function addNewCoffee(coffeeObject) {
+  return CoffeeCollection.create(coffeeObject);
+}
+
+function updateCoffee(coffeeId, updatedCoffee) {
+  return CoffeeCollection.findByIdAndUpdate(coffeeId, updatedCoffee, {
+    new: true
+  });
+}
+
+function deleteCoffee(coffeeId) {
+  return CoffeeCollection.findByIdAndDelete(coffeeId);
+}
 
 /* Step 5
  *
@@ -51,5 +71,10 @@ const CoffeeSchema = new mongoose.Schema({
  * object
  */
 module.exports = {
+  getAllCoffees,
+  getCoffee,
+  addNewCoffee,
+  updateCoffee,
+  deleteCoffee
  
 }
