@@ -19,14 +19,13 @@ const mongoose = require('./connection.js')
  *
  */
 
-
 /* Step 2
  *
  * TODO: create model schema 
  * NOTE: skip this if you are not using mongoose
  *
  */
-const NeighborhoodSchema = new mongoose.Schema({
+const CoffeeSchema = new mongoose.Schema({
  name: String
 })
 
@@ -36,7 +35,8 @@ const NeighborhoodSchema = new mongoose.Schema({
  * NOTE: skip this if you are not using mongoose
  *
  */
-const NeighborhoodCollection = mongoose.model('Neighborhood', NeighborhoodSchema)
+
+ const CoffeeCollection = mongoose.model('Coffee', CoffeeSchema)
 
 /* Step 4
  *
@@ -44,26 +44,6 @@ const NeighborhoodCollection = mongoose.model('Neighborhood', NeighborhoodSchema
  *
  */
 
- function getAllNeighborhoods() {
-    return NeighborhoodCollection.find();
-  }
-
- function getNeighborhood(NeighborhoodId) {
-    return NeighborhoodCollection.findById(NeighborhoodId);
-  }
- function addNewNeighborhood(neighborhoodObject) {
-  return NeighborhoodCollection.create(neighborhoodObject);
-}
-
- function updateNeighborhood(neighborhoodId, updatedNeighborhood) {
-  return NeighborhoodCollection.findByIdAndUpdate(neighborhoodId, updatedNeighborhood, {
-    new: true
-  });
-}
-
- function deleteNeighborhood(neighborhoodId) {
-  return NeighborhoodCollection.findByIdAndDelete(neighborhoodId);
-} 
 
 /* Step 5
  *
@@ -71,11 +51,5 @@ const NeighborhoodCollection = mongoose.model('Neighborhood', NeighborhoodSchema
  * object
  */
 module.exports = {
-    getAllNeighborhoods,
-    getNeighborhood,
-    addNewNeighborhood,
-    updateNeighborhood,
-    deleteNeighborhood
-
-    
+ 
 }
