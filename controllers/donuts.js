@@ -36,7 +36,55 @@ const donutRouter = express.Router()
  *
  * TODO: delete this handler; it's just a sample
  */ 
-
+ donutRouter.get("/", (req, res) => {
+  donutApi.getAllDonuts().then(donuts => {
+      res.json(donuts);
+    });
+  });
+  
+  donutRouter.get("/:donutId", (req, res) => {
+    donutApi
+      .getDonut(req.params.donutId)
+      .then(donuts => {
+        res.json(donuts);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+  
+  donutRouter.post("/", (req, res) => {
+    donutApi
+      .addNewDonut(req.body)
+      .then(donut => {
+        res.json(donut);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+  
+  donutRouter.put("/:donutId", (req, res) => {
+    donutApi
+      .updateDonut(req.params.donutId, req.body)
+      .then(updateDonuts => {
+        res.json(updateDonuts);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+  
+  donutRouter.delete("/:donutId", (req, res) => {
+    donutApi
+      .deleteDonut(req.params.donutId)
+      .then(donuts => {
+        res.json(donuts);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
 
 /* Step 6
  *
