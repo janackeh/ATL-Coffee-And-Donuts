@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Neighborhoods from "./components/neighborhoods";
+import Neighborhoods from "./components/neighborhoods.jsx";
 import './App.css';
 
 function App() {

@@ -44,14 +44,14 @@ export default class Neighborhoods extends Component {
             });
           };
         
-          handleInputChange = neighborhoods => {
+          handleInputChange = event => {
             const copiedNeighborhood = { ...this.state.newNeighborhood };
             copiedNeighborhood[event.target.name] = event.target.value;
         
             this.setState({ newNeighborhood: copiedNeighborhood });
           };
         
-          handleSubmit = neighborhoods => {
+          handleSubmit = event => {
             event.preventDefault();
         
             axios.post("/api/neighborhoods/", this.state.newNeighborhood).then(res => {
@@ -101,7 +101,7 @@ export default class Neighborhoods extends Component {
             </form>
           ) : (
               <div>
-                <img src="https://i.imgur.com/7EVpbk2.png" alt="logo"></img>
+                <img src="https://i.imgur.com/f2V6A8v.png" alt="neighborhoods"></img>
                 <h1> Neighborhoods </h1>
                 {neighborhoodsList}
                 <div>

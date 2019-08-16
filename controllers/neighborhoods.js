@@ -75,7 +75,7 @@ neighborhoodRouter.get("/", (req, res) => {
       });
   });
   
-  niehgborhoodRouter.delete("/:neighborhoodId", (req, res) => {
+  neighborhoodRouter.delete("/:neighborhoodId", (req, res) => {
     neighborhoodApi
       .deleteNeighborhood(req.params.neighborhoodId)
       .then(neighborhood => {

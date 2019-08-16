@@ -8,17 +8,17 @@
  * Import needed packages
  *
  */
-const express = require('express')
-const app = express()
+    const express = require('express')
+    const app = express()
 
 /* Step 2
  * 
  * import routers from controllers/
  *
  */
-const { neighborhoodRouter } = require('./controllers/neighborhoods.js')
-const { coffeeRouter } = require('./controllers/coffee.js')
-const { donutRouter } = require('./controllers/donuts.js')
+    const { neighborhoodRouter } = require("./controllers/neighborhoods.js");
+    const { coffeeRouter } = require("./controllers/coffee.js");
+    const { donutRouter } = require("./controllers/donuts.js");
 
 
 /* Step 3
@@ -29,13 +29,13 @@ const { donutRouter } = require('./controllers/donuts.js')
 /* Step 3.a
  * ...to parse the body of the HTTP requests from a URL encoded string 
  */
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({extended: true}));
 
 /* Step 3.b 
  *
  * ...to parse the body of the HTTP requests from a JSON string  
  */
-app.use(express.json())
+app.use(express.json());
 
 
 /* Step 3.c
@@ -43,7 +43,7 @@ app.use(express.json())
  * use the `./client/build` directory to host static resources such as css and
  * image files 
  */
-app.use(express.static(`${__dirname}/client/build`))
+app.use(express.static(`${__dirname}/client/build`));
 
 
 /* Step 4
@@ -51,9 +51,9 @@ app.use(express.static(`${__dirname}/client/build`))
  * add router for the application to use. The first argument is a prefix to all
  * the paths defined in the router.
  */
-app.use('/api/neighborhoods', neighborhoodRouter)
-app.use('/api/coffee', coffeeRouter)
-app.use('/api/donuts', donutRouter)
+app.use('/api/neighborhoods', neighborhoodRouter);
+app.use('/api/coffee', coffeeRouter);
+app.use('/api/donuts', donutRouter);
 
 /* Step 5
  *
@@ -61,7 +61,7 @@ app.use('/api/donuts', donutRouter)
  * /api/... routes.
  */
 app.get('/*', (req, res) => {
-    res.sendFile(`${__dirname}/client/build/index.html`)
+    res.sendFile(`${__dirname}/client/build/index.html`);
 })
 
 /* Step 6
@@ -70,12 +70,12 @@ app.get('/*', (req, res) => {
  *
  * NOTE: keep these lines at the bottom of the file 
  */
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 3001;
 
 /* Step 7
  *
  * Start the server
  */
 app.listen(PORT, () => {
-    console.log(`App is listening on PORT ${PORT}`)
-})
+    console.log(`App is listening on PORT ${PORT}`);
+});
