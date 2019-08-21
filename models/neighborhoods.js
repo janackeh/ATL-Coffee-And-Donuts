@@ -38,11 +38,7 @@ const NeighborhoodSchema = new mongoose.Schema({
  */
 const NeighborhoodCollection = mongoose.model('Neighborhood', NeighborhoodSchema)
 
-/* Step 4
- *
- * TODO: delete this it's just a sample
- *
- */
+
 
  function getAllNeighborhoods() {
     return NeighborhoodCollection.find();

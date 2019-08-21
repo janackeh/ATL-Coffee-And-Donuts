@@ -1,17 +1,12 @@
-/* Step 1 import React, { Component } and axios
- *
- */
+
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Redirect } from "react-router-dom";
 
-/* Step 2
- * Rename this class to reflect the component being created
- *
- */
+
 export default class SingleNeighborhood extends Component {
     state = {
-        event: {},
+        neighborhood: {},
         isEditFormDisplayed: false,
         redirectHome: false
   };
@@ -25,8 +20,8 @@ export default class SingleNeighborhood extends Component {
   }
 
   handleInputChange = event => {
-    let copiedNeighborhood = { ...this.state.event };
-    copiedNieghborhood[event.target.name] = event.target.value;
+    let copiedNeighborhood = { ...this.state.neighborhood };
+    copiedNeighborhood[event.target.name] = event.target.value;
 
     this.setState({ neighborhood: copiedNeighborhood });
   };
@@ -38,7 +33,7 @@ export default class SingleNeighborhood extends Component {
       .put(`/api/neighborhoods/${this.state.neighborhood._id}`, this.state.neighborhood)
       .then(res => {
         this.setState({
-          neighborhood: res.data,
+          neighborhood : res.data,
           isEditFormDisplayed: false
         });
       });
@@ -64,13 +59,13 @@ export default class SingleNeighborhood extends Component {
 
   renderRedirect = () => {
       if (this.state.redirect) {
-          return <Redirect to='/'/>
+          return <Redirect to='/neighborhoods'/>
       }
   }
 
   render() {
     if (this.state.redirectToHome) {
-      return <Redirect to="/" />;
+      return <Redirect to="/neighborhoods"/>;
     }
     return this.state.isEditFormDisplayed ? (
       <form onSubmit={this.handleSubmit}>
@@ -100,18 +95,9 @@ export default class SingleNeighborhood extends Component {
         <button onClick={this.handleDeleteEvent}>Delete Neighborhood</button>
         {this.renderRedirect()}
         <button onClick={this.redirectHome}>Back to Home</button>
-        <h2>{this.state.neighborhood.name}</h2>
-        <p>{this.state.neighborhood.location}</p>
+        <h2>{this.state.neighborhood.name}</h2> 
+        <h4>{this.state.neighborhood.location}</h4>  
       </div>
     );
   }
 }
-
-    render() 
-        return (
-            <div>
-                {/* Accessing the value of message from the state object */}
-                <h1>{this.state.message}</h1>
-            </div>
-        );
-    

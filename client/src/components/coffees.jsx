@@ -3,16 +3,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 
-/* Step 2
- * Rename this class to reflect the component being created
- *
- */
+
 export default class Coffees extends Component {
 
-    /* Step 3
-    * Create a state for the component to store view data
-    *
-    */
+  
     state = {
         coffees: [],
         isNewFormDisplayed: false,
@@ -25,7 +19,7 @@ export default class Coffees extends Component {
         }
 
         getAllCoffees = () => {
-            axios.get("/api/coffees/").then(res => {
+            axios.get("/api/coffees").then(res => {
               console.log(res.data);
               this.setState({ coffees: res.data });
             });
@@ -47,7 +41,7 @@ export default class Coffees extends Component {
           handleSubmit = event => {
             event.preventDefault();
         
-            axios.post("/api/coffees/", this.state.newCoffee).then(res => {
+            axios.post("/api/coffees", this.state.newCoffee).then(() =>   {
               this.setState({ isNewFormDisplayed: false });
               this.getAllCoffees();
             });
@@ -93,7 +87,7 @@ export default class Coffees extends Component {
                 <h1> Coffee Shops </h1>
                 {coffeesList}
                 <div>
-                  <button onClick={this.handleToggleNewForm}>Create New Coffee Shops</button>
+                  <button onClick={this.handleToggleNewForm}>Create New Coffee Shop</button>
                 </div>
               </div>
             );

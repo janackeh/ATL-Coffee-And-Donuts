@@ -37,8 +37,8 @@ const coffeeRouter = express.Router()
  * TODO: delete this handler; it's just a sample
  */ 
 coffeeRouter.get("/", (req, res) => {
-  coffeeApi.getAllCoffees().then(coffee => {
-      res.json(coffee);
+  coffeeApi.getAllCoffees().then(coffees => {
+      res.json(coffees);
     });
   });
   

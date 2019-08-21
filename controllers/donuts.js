@@ -45,8 +45,8 @@ const donutRouter = express.Router()
   donutRouter.get("/:donutId", (req, res) => {
     donutApi
       .getDonut(req.params.donutId)
-      .then(donuts => {
-        res.json(donuts);
+      .then(donut => {
+        res.json(donut);
       })
       .catch(err => {
         console.log(err);
@@ -67,8 +67,8 @@ const donutRouter = express.Router()
   donutRouter.put("/:donutId", (req, res) => {
     donutApi
       .updateDonut(req.params.donutId, req.body)
-      .then(updateDonuts => {
-        res.json(updateDonuts);
+      .then(updateDonut => {
+        res.json(updateDonut);
       })
       .catch(err => {
         console.log(err);
@@ -78,8 +78,8 @@ const donutRouter = express.Router()
   donutRouter.delete("/:donutId", (req, res) => {
     donutApi
       .deleteDonut(req.params.donutId)
-      .then(donuts => {
-        res.json(donuts);
+      .then(donut => {
+        res.json(donut);
       })
       .catch(err => {
         console.log(err);

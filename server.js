@@ -52,7 +52,7 @@ app.use(express.static(`${__dirname}/client/build`));
  * the paths defined in the router.
  */
 app.use('/api/neighborhoods', neighborhoodRouter);
-app.use('/api/coffee', coffeeRouter);
+app.use('/api/coffees', coffeeRouter);
 app.use('/api/donuts', donutRouter);
 
 /* Step 5

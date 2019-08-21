@@ -3,16 +3,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 
-/* Step 2
- * Rename this class to reflect the component being created
- *
- */
-export default class Neighborhoods extends Component {
 
-    /* Step 3
-    * Create a state for the component to store view data
-    *
-    */
+export default class Neighborhoods extends Component {
     state = {
         neighborhoods: [],
         isNewFormDisplayed: false,
@@ -20,19 +12,13 @@ export default class Neighborhoods extends Component {
         newNeighborhood: "",
     };
 
-    /* Step 4
-    * Use componentDidMount to retrieve any data to display
-    *   Here you can make calls to your local express server
-    *   or to an external API
-    *   setState can be run here as well
-    *   -REMINDER remember `setState` it is an async function
-    */
-        componentDidMount() {
-        this.getAllNeighborhoods();
-        }
 
-        getAllNeighborhoods = () => {
-            axios.get("/api/neighborhoods/").then(res => {
+    componentDidMount() {
+      this.getAllNeighborhoods();
+      }
+
+    getAllNeighborhoods = () => {
+      axios.get("/api/neighborhoods/").then(res => {
               console.log(res.data);
               this.setState({ neighborhoods: res.data });
             });
@@ -59,18 +45,12 @@ export default class Neighborhoods extends Component {
               this.getAllNeighborhoods();
             });
           };
-        
-    /* Step 5
-    *  The render function manages what is shown in the browser
-    *  TODO: delete the jsx returned
-    *   and replace it with your own custom jsx template
-    *
-    */
-    render() {
-        let neighborhoodsList = this.state.neighborhoods.map(neighborhood => {
-            return (
-              <div>
-      
+    
+          
+   render() {
+    let neighborhoodsList = this.state.neighborhoods.map(neighborhood => {
+      return (
+               <div>
                 <Link key={neighborhood._id} to={`/neighborhoods/${neighborhood._id}`}>
                   {neighborhood.name}
                 </Link>
@@ -85,8 +65,7 @@ export default class Neighborhoods extends Component {
                 id="new-neighborhood-name"
                 name="name"
                 onChange={this.handleInputChange}
-                value={this.state.newNeighborhood.name}
-              />
+                value={this.state.newNeighborhood.name}/>
       
               <label htmlFor="new-neighborhood-location">Neighborhood Location</label>
               <input
@@ -94,8 +73,7 @@ export default class Neighborhoods extends Component {
                 id="new-neighborhood-location"
                 name="location"
                 onChange={this.handleInputChange}
-                value={this.state.newEvent.location}
-              />
+                value={this.state.newNeighborhood.location}/>
       
               <input type="submit" value="Create Neighborhood" />
             </form>

@@ -15,7 +15,7 @@ const express = require('express')
  * controller you need.
  * 
  */
-const NeighborhoodApi = require('../models/neighborhoods.js')
+const neighborhoodsApi = require('../models/neighborhoods.js')
 
 /* Step 3 
  * 
@@ -25,7 +25,7 @@ const NeighborhoodApi = require('../models/neighborhoods.js')
  * TODO: rename this from templateRouter to something that makes sense. (e.g:
  * `shopRouter`)
  */
-const neighborhoodRouter = express.Router()
+const neighborhoodRouter = express.Router();
 
 /* Step 4
  * 
@@ -37,7 +37,7 @@ const neighborhoodRouter = express.Router()
  * TODO: delete this handler; it's just a sample
  */ 
 neighborhoodRouter.get("/", (req, res) => {
-  neighborhoodApi.getAllNeighborhoods().then(neighborhoods => {
+  neighborhoodsApi.getAllNeighborhoods().then(neighborhoods => {
       res.json(neighborhoods);
     });
   });
@@ -54,7 +54,7 @@ neighborhoodRouter.get("/", (req, res) => {
   });
   
   neighborhoodRouter.post("/", (req, res) => {
-    neighborhoodApi
+    neighborhoodsApi
       .addNewNeighborhood(req.body)
       .then(neighborhood => {
         res.json(neighborhood);
@@ -65,7 +65,7 @@ neighborhoodRouter.get("/", (req, res) => {
   });
   
   neighborhoodRouter.put("/:neighborhoodId", (req, res) => {
-    neighborhoodApi
+    neighborhoodsApi
       .updateNeighborhood(req.params.neighborhoodId, req.body)
       .then(updateNeighborhood => {
         res.json(updateNeighborhood);
@@ -76,7 +76,7 @@ neighborhoodRouter.get("/", (req, res) => {
   });
   
   neighborhoodRouter.delete("/:neighborhoodId", (req, res) => {
-    neighborhoodApi
+    neighborhoodsApi
       .deleteNeighborhood(req.params.neighborhoodId)
       .then(neighborhood => {
         res.json(neighborhood);

@@ -11,7 +11,7 @@ import { Redirect } from "react-router-dom";
  */
 export default class SingleCoffee extends Component {
     state = {
-        coffeeshop: {},
+        coffee: {},
         isEditFormDisplayed: false,
         redirectHome: false
   };
@@ -25,10 +25,10 @@ export default class SingleCoffee extends Component {
   }
 
   handleInputChange = event => {
-    let copiedCoffee = { ...this.state.event };
+    let copiedCoffee = { ...this.state.coffees };
     copiedCoffee[event.target.name] = event.target.value;
 
-    this.setState({ coffee: copiedCoffee });
+    this.setState({ coffees: copiedCoffee });
   };
 
   handleSubmit = event => {
@@ -64,13 +64,13 @@ export default class SingleCoffee extends Component {
 
   renderRedirect = () => {
       if (this.state.redirect) {
-          return <Redirect to='/'/>
+          return <Redirect to='/coffees'/>
       }
   }
 
   render() {
     if (this.state.redirectToHome) {
-      return <Redirect to="/" />;
+      return <Redirect to="/coffees" />;
     }
     return this.state.isEditFormDisplayed ? (
       <form onSubmit={this.handleSubmit}>
@@ -92,7 +92,7 @@ export default class SingleCoffee extends Component {
           value={this.state.coffee.location}
         />
 
-        <input type="submit" value="Update Coffee Shop" />
+        <input type="submit" value="Update Coffee Shop"/>
       </form>
     ) : (
       <div>
@@ -107,9 +107,9 @@ export default class SingleCoffee extends Component {
   }
 }
 
-    render() 
-        return (
-            <div>
-                <h1>{this.state.message}</h1>
-            </div>
-        );
+    // render() 
+    //     return (
+    //         <div>
+    //             <h1>{this.state.message}</h1>
+    //         </div>
+    //     );
