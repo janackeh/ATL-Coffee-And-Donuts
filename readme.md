@@ -6,8 +6,8 @@ Welcome to my 4th project! In this project, I wanted to create a simple app for 
 
 ## Links :
 
-* Trello project board : [](https://trello.com/b/mzoFLfmf/janackeh-project-4)
-* Heroku : [] (https://atl-coffee-and-donuts.herokuapp.com/)
+* Trello project board :[](https://trello.com/b/mzoFLfmf/janackeh-project-4)
+* Heroku :[] (https://atl-coffee-and-donuts.herokuapp.com/)
 
 ## Wireframes :
 ![WF](https://user-images.githubusercontent.com/50855671/63427410-10e5d100-c3e3-11e9-9757-be58bb59fc4a.JPG)
