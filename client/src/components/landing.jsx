@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { Button } from 'react-bootstrap'
 
 class Landing extends Component {
     render() {
        
         return (
+            <div>
         <div className="Landing">
             <div id="header" className="overlay"></div>
                 <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
@@ -29,14 +31,17 @@ class Landing extends Component {
         <div className="col-md-8 mx-auto">
         <p>We exist to make your morning routine more exciting than just loud alarm clocks and Atlanta traffic.</p>
         <p className="mb-0">
-        <Link to="/home"><Button variant="primary" active={true}>GOOD MORNING</Button></Link>
+        <Link to="/neighborhoods"><Button variant="primary" active={true}>GOOD MORNING</Button></Link>
         </p>
       </div>
      </div>
      </div>
      </section>
+     
         
-        )   
+) 
+</div> 
+        )
 }
 }
 
