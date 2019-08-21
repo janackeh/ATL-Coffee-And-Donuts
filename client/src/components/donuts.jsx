@@ -7,37 +7,36 @@ import { Link } from "react-router-dom";
 export default class Donuts extends Component {
 
     state = {
-        state = {
             donuts: [],
             isNewFormDisplayed: false,
             addNewDonut: [],
             newDonut: "",
-        },
+        }
     
     
         componentDidMount() {
           this.getAllDonuts();
-          },
+          }
     
         getAllDonuts = () => {
           axios.get("/api/donuts/").then(res => {
                   console.log(res.data);
                   this.setState({ donuts: res.data });
                 });
-              },
+              };
             
               handleToggleNewForm = () => {
                 this.setState(state => {
                   return { isNewFormDisplayed: !state.isNewFormDisplayed };
                 });
-              },
+              };
             
               handleInputChange = event => {
                 const copiedDonut = { ...this.state.newDonut };
                 copiedDonut[event.target.name] = event.target.value;
             
                 this.setState({ newDonut: copiedDonut });
-              },
+              };
             
               handleSubmit = event => {
                 event.preventDefault();
@@ -46,14 +45,14 @@ export default class Donuts extends Component {
                   this.setState({ isNewFormDisplayed: false });
                   this.getAllDonuts();
                 });
-              },
+              };
         
               
        render() {
         let donutsList = this.state.donuts.map(donut => {
           return (
                    <div>
-                    <Link key={donut ._id} to={`/donuts/${donut._id}`}>
+                    <Link key={donut._id} to={`/donuts/${donut._id}`}>
                       {donut.name}
                     </Link>
                   </div>
@@ -81,7 +80,7 @@ export default class Donuts extends Component {
                 </form>
               ) : (
                   <div>
-                    <img src="https://i.imgur.com/f2V6A8v.png" alt="donut shops"></img>
+                    <img src="https://i.imgur.com/siQpKkr.png" alt="donut shops"></img>
                     <h1> Donut Shops </h1>
                     {donutsList}
                     <div>
@@ -91,4 +90,3 @@ export default class Donuts extends Component {
                 );
             }
           }
-}
